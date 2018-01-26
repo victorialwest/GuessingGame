@@ -12,8 +12,30 @@ public class Main {
         //5. Allow the user to play again if they would like
 
         Scanner input = new Scanner(System.in);
+        int numberOfGuesses = 0;
+
+        final int MAX_GUESS_COUNT = 4;
 
         System.out.print("Enter your guess: ");
         int userGuess = input.nextInt();
+
+        int generatedNumber = (int) Math.ceil(Math.random() * 100);
+        do{
+
+            if (userGuess > generatedNumber) {
+            System.out.println("Your number is too high!");
+            numberOfGuesses++;
+            } else if(userGuess < generatedNumber) {
+                System.out.println("Your number is too low!");
+                numberOfGuesses++;
+            }else if(userGuess == generatedNumber) {
+                System.out.println("you guessed the correct number!");
+            }else if(numberOfGuesses == MAX_GUESS_COUNT) {
+                 System.out.println("Sorry, you ran out of chances. The correct number was " + generatedNumber);
+                }
+
+        } while  (numberOfGuesses <= 4);
+
     }
+
 }
